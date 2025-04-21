@@ -1,0 +1,2 @@
+E:/Flutter Projects - 2025/sylonow/android/app/.cxx/Debug/dq5r7217/x86/CMakeFiles/edit_cache.dir
+E:/Flutter Projects - 2025/sylonow/android/app/.cxx/Debug/dq5r7217/x86/CMakeFiles/rebuild_cache.dir
