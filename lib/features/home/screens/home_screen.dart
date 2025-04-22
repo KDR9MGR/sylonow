@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sylonow/utils/constants/app_colors.dart';
 import 'package:sylonow/utils/constants/image_string.dart';
 import 'package:sylonow/utils/widgets/service_card.dart';
 import 'package:sylonow/features/home/widgets/app_bar_clipper.dart';
 import 'package:sylonow/features/home/widgets/category_card.dart';
 import 'package:sylonow/features/home/widgets/service_carousel.dart';
 import 'package:sylonow/features/home/provider/services_provider.dart';
+import 'package:sylonow/utils/constants/app_colors.dart';       
 
-// Custom Clipper for Bottom Navigation Bar
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -21,14 +19,8 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-  int _selectedIndex = 0; // Track selected tab
 
-  // Method to handle tab selection
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -233,31 +225,96 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  // Helper method to build navigation items
-  Widget _buildNavItem(int index, String svgPath, String label) {
-    bool isSelected = _selectedIndex == index;
-    return InkWell(
-      onTap: () => _onItemTapped(index),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SvgPicture.asset(
-            svgPath,
-            height: 24,
-            width: 24,
-            color: isSelected ? TColors.primary : Colors.grey,
-          ),
-          const SizedBox(height: 4),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              color: isSelected ? TColors.primary : Colors.grey,
-              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+
+}
+
+class _ServiceCard extends StatelessWidget {
+  final String image;
+  final String title;
+  final String price;
+  final VoidCallback onTap;
+
+  const _ServiceCard({
+    required this.image,
+    required this.title,
+    required this.price,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(right: 16),
+        width: 200,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
             ),
-          ),
-        ],
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Hero(
+              tag: 'service-image-$image',
+              child: ClipRRect(
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+                child: Image.asset(
+                  image,
+                  height: 120,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      Text(
+                        '₹',
+                        style: TextStyle(
+                          color: TColors.primary,
+                          fontSize: 14,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        price,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: TColors.primary,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

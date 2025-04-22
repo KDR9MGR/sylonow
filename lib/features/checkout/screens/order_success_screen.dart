@@ -86,7 +86,7 @@ class _OrderSuccessScreenState extends State<OrderSuccessScreen>
                 FadeTransition(
                   opacity: _fadeAnimation,
                   child: FilledButton(
-                    onPressed: () => context.go('/home'),
+                    onPressed: () => context.go('/main'),
                     child: const Text('Back to Home'),
                   ),
                 ),

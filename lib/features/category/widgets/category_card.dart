@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import '../screens/category_detail_screen.dart';
 
 class CategoryCard extends StatelessWidget {

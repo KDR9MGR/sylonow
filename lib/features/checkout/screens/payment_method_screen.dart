@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sylonow/features/checkout/models/payment_method.dart';
-import 'package:sylonow/features/checkout/provider/checkout_state.dart';
 
 class PaymentMethodScreen extends ConsumerStatefulWidget {
   const PaymentMethodScreen({super.key});

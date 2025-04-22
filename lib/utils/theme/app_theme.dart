@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sylonow/utils/constants/app_colors.dart';
-import 'package:sylonow/utils/theme/button_theme.dart';
-import 'package:sylonow/utils/theme/radio_theme.dart';
-import 'package:sylonow/utils/theme/textfield_theme.dart';
 import 'package:sylonow/utils/theme/app_typography.dart';
 
 class AppTheme {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class ServiceCarousel extends StatefulWidget {
   const ServiceCarousel({super.key});
@@ -23,6 +24,9 @@ class _ServiceCarouselState extends State<ServiceCarousel> with SingleTickerProv
   double _dragStartX = 0;
   double _dragPosition = 0;
   bool _isDragging = false;
+  Timer? _autoScrollTimer;
+  late AnimationController _animationController;
+  late Animation<double> _animation;
 
   @override
   void initState() {
@@ -30,9 +34,65 @@ class _ServiceCarouselState extends State<ServiceCarousel> with SingleTickerProv
     _centerIndex = (_items.length * _lengthMultiplier) ~/ 2;
     _page = _centerIndex.toDouble();
     _childSize = 240; // Keep the larger size
+    
+    // Initialize animation controller
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+    
+    _animation = Tween<double>(
+      begin: _page,
+      end: _page + 1,
+    ).animate(CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeInOut,
+    ))..addListener(() {
+      setState(() {
+        _page = _animation.value;
+      });
+    });
+
+    _startAutoScroll();
+  }
+
+  @override
+  void dispose() {
+    _autoScrollTimer?.cancel();
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  void _startAutoScroll() {
+    _autoScrollTimer?.cancel();
+    _autoScrollTimer = Timer.periodic(const Duration(seconds: 3), (timer) {
+      if (!_isDragging && mounted) {
+        _animateToNextPage();
+      }
+    });
+  }
+
+  void _animateToNextPage() {
+    _animation = Tween<double>(
+      begin: _page,
+      end: _page + 1,
+    ).animate(CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeInOut,
+    ));
+
+    _animationController.forward(from: 0).then((_) {
+      if (mounted) {
+        setState(() {
+          _page = _page % (_items.length * _lengthMultiplier).toDouble();
+        });
+      }
+    });
   }
 
   void _onHorizontalDragStart(DragStartDetails details) {
+    _autoScrollTimer?.cancel();
+    _animationController.stop();
     setState(() {
       _isDragging = true;
       _dragStartX = details.localPosition.dx;
@@ -59,6 +119,7 @@ class _ServiceCarouselState extends State<ServiceCarousel> with SingleTickerProv
       _isDragging = false;
       _page = _page.round().toDouble();
     });
+    _startAutoScroll(); // Resume auto-scroll after drag ends
   }
 
   List<Widget> _buildStackChildren() {

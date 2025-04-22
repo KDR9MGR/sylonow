@@ -45,12 +45,15 @@ class ServiceCard extends ConsumerWidget {
               borderRadius: BorderRadius.vertical(top: Radius.circular(15.r)),
               child: AspectRatio(
                 aspectRatio: 1.2,
-                child: Image.network(
-                  service.images.first,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) => Container(
-                    color: Colors.grey[200],
-                    child: Icon(Icons.image_not_supported, size: 24.sp),
+                child: Hero(
+                  tag: 'service_image_${service.images.first}',
+                  child: Image.network(
+                    service.images.first,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => Container(
+                      color: Colors.grey[200],
+                      child: Icon(Icons.image_not_supported, size: 24.sp),
+                    ),
                   ),
                 ),
               ),
@@ -151,12 +154,15 @@ class ServiceCard extends ConsumerWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15.r),
-                child: Image.network(
-                  service.images.first,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) => Container(
-                    color: Colors.grey[200],
-                    child: Icon(Icons.image_not_supported, size: 24.sp),
+                child: Hero(
+                  tag: 'service_image_${service.images.first}',
+                  child: Image.network(
+                    service.images.first,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => Container(
+                      color: Colors.grey[200],
+                      child: Icon(Icons.image_not_supported, size: 24.sp),
+                    ),
                   ),
                 ),
               ),

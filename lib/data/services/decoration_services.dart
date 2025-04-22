@@ -8,8 +8,8 @@ final List<ServiceModel> decorationServices = [
     price: 15000,
     decoratorId: 'dec1',
     images: [
-      'https://i.pinimg.com/originals/89/d3/d6/89d3d6d2881f4950e56b9774d8f8ba4f.jpg',
-      'https://i.pinimg.com/originals/6e/c8/f5/6ec8f5f1d886cce77f15d7a22894c6e0.jpg',
+      'https://content.jdmagicbox.com/v2/comp/mumbai/m3/022pxx22.xx22.121026013350.l2m3/catalogue/bhagwati-banquets-bhandup-west-mumbai-caterers-49zy7p2s2u.jpg',
+      'https://5.imimg.com/data5/SELLER/Default/2022/11/WC/DJ/DI/93470371/wedding-flower-stage-decoration-service-500x500.png',
     ],
     category: 'Wedding',
     rating: 4.9,
@@ -22,7 +22,7 @@ final List<ServiceModel> decorationServices = [
     price: 8000,
     decoratorId: 'dec2',
     images: [
-      'https://i.pinimg.com/originals/b5/8c/0c/b58c0c73d5e3a91b0f7c7e8e8c1d2b2a.jpg',
+      'https://tiimg.tistatic.com/fp/1/004/016/wedding-stage-decoration-service-135.jpg',
       'https://i.pinimg.com/originals/d4/7f/2e/d47f2e9b5b9f8c8c8c8c8c8c8c8c8c8c.jpg',
     ],
     category: 'Baby Shower',
@@ -36,7 +36,7 @@ final List<ServiceModel> decorationServices = [
     price: 45000,
     decoratorId: 'dec3',
     images: [
-      'https://i.pinimg.com/originals/1a/2b/3c/1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o.jpg',
+      'https://horaservices.com/api/uploads/attachment-1706520980436.png',
       'https://i.pinimg.com/originals/2b/3c/4d/2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p.jpg',
     ],
     category: 'Wedding',
@@ -50,7 +50,7 @@ final List<ServiceModel> decorationServices = [
     price: 12000,
     decoratorId: 'dec4',
     images: [
-      'https://i.pinimg.com/originals/4d/5e/6f/4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r.jpg',
+      'https://5.imimg.com/data5/SELLER/Default/2023/7/329678100/CL/JL/TL/7836342/wedding-decoration-service-500x500.jpeg',
     ],
     category: 'Birthday',
     rating: 4.7,
@@ -63,7 +63,7 @@ final List<ServiceModel> decorationServices = [
     price: 35000,
     decoratorId: 'dec5',
     images: [
-      'https://i.pinimg.com/originals/7g/8h/9i/7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u.jpg',
+      'https://www.fnp.com/assets/images/custom/decoration-services/decoration-by-occasion/anniversary-decoration-19-march-2019.jpg',
     ],
     category: 'Corporate',
     rating: 4.9,

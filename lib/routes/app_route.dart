@@ -33,10 +33,7 @@ class AppRoute {
       ),
       GoRoute(
         path: '/service-detail',
-        pageBuilder: (context, state) => CustomPage(
-          child: const ServiceDetailScreen(),
-          name: 'service-detail',
-        ),
+        builder: (context, state) => const ServiceDetailScreen(),
       ),
       GoRoute(
         path: '/checkout',
@@ -56,10 +53,8 @@ class AppRoute {
       ),
       GoRoute(
         path: '/order-success',
-        pageBuilder: (context, state) => CustomPage(
-          child: const OrderSuccessScreen(),
-          name: 'order-success',
-        ),
+        name: 'order-success',
+        builder: (context, state) => const OrderSuccessScreen(),
       ),
       GoRoute(
       path: '/category-detail/:heroTag',
